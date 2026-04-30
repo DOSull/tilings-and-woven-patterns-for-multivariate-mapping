@@ -22,7 +22,7 @@ for (svg in svgs_colour[4]) {
   system(cmd)
 }
 
-for (svg in svgs_grayscale[c(12)]) {
+for (svg in svgs_grayscale[c(5)]) {
   base <- strsplit(svg, ".", fixed = TRUE)[[1]][1]
   op <- glue("{base}.png")
   type <- "export-type:png"
@@ -35,8 +35,8 @@ for (svg in svgs_grayscale[c(12)]) {
   system(cmd)
 }
 
-for (png in dir(pattern = ".*.png$")[c(14)]) {
-  system(glue("/opt/homebrew/bin/mogrify {png} -trim"))
+for (png in dir(pattern = ".*.png$")[c(7)]) {
+  system(glue("/opt/homebrew/bin/mogrify {png} -fuzz 20% -trim"))
 }
 
 ## NOTE THAT FIGS 3 19 20 need trimming to size using the GIMP
