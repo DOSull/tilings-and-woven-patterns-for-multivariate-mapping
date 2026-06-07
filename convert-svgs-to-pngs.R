@@ -4,11 +4,11 @@ library(stringr)
 setwd("~/Documents/research/Papers/tilings-and-woven-patterns-for-multivariate-mapping")
 
 svgs <- dir(pattern = "*\\.svg")
-col <- str_count(svgs, c("(0[12])|(1[78])")) > 0
+col <- str_count(svgs, c("(0[1236789])|(1[12478])")) > 0
 svgs_colour <- svgs[which(col)]
 svgs_grayscale <- svgs[which(!col)]
 
-for (svg in svgs_colour[4]) {
+for (svg in svgs_colour[3:10]) {
   base <- strsplit(svg, ".", fixed = TRUE)[[1]][1]
   op <- glue("{base}.png")
   type <- "export-type:png"
@@ -22,7 +22,7 @@ for (svg in svgs_colour[4]) {
   system(cmd)
 }
 
-for (svg in svgs_grayscale[c(5)]) {
+for (svg in svgs_grayscale[c(1,4:10,12)]) {
   base <- strsplit(svg, ".", fixed = TRUE)[[1]][1]
   op <- glue("{base}.png")
   type <- "export-type:png"
@@ -35,7 +35,7 @@ for (svg in svgs_grayscale[c(5)]) {
   system(cmd)
 }
 
-for (png in dir(pattern = ".*.png$")[c(7)]) {
+for (png in dir(pattern = ".*.png$")[c(3,6:12,14)]) {
   system(glue("/opt/homebrew/bin/mogrify {png} -fuzz 20% -trim"))
 }
 
