@@ -16,3 +16,11 @@ pyproject.toml
 fig*.png
 fig*.svg
 PRIVATE*
+
+data/
+revision/
+.gitignore
+*.docx
+*.pdf
+
+.ipynb_checkpoints/
