@@ -6,7 +6,7 @@ setwd(
 )
 
 svgs <- dir(pattern = "*\\.svg")
-col <- str_count(svgs, c("(0[1236789])|(1[012478])")) > 0
+col <- str_count(svgs, c("(0[1236789])|(1[012456])")) > 0
 svgs_colour <- svgs[which(col)]
 svgs_grayscale <- svgs[which(!col)]
 
@@ -26,7 +26,7 @@ for (svg in svgs_colour[13]) {
   system(cmd)
 }
 
-for (svg in svgs_grayscale[c(1, 4:10, 12)]) {
+for (svg in svgs_grayscale[c(5)]) {
   base <- strsplit(svg, ".", fixed = TRUE)[[1]][1]
   op <- glue("{base}.png")
   type <- "export-type:png"
@@ -41,7 +41,7 @@ for (svg in svgs_grayscale[c(1, 4:10, 12)]) {
   system(cmd)
 }
 
-for (png in dir(pattern = ".*.png$")[c(16)]) {
+for (png in dir(pattern = ".*.png$")[c(18)]) {
   system(glue("/opt/homebrew/bin/mogrify {png} -fuzz 20% -trim"))
 }
 
