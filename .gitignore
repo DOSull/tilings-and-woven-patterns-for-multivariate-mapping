@@ -13,8 +13,10 @@ pyproject.toml
 
 .DS_Store
 
-fig*.png
-fig*.svg
+*fig*.png
+*fig*.svg
+*fig*.eps
+*fig*.tif*
 PRIVATE*
 
 data/
